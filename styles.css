@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Slider Styles */
+.slider {
+    width: 100%;
+    height: calc(100vh - 120px); /* Full height except header and footer */
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    width: 900%; /* This depends on the number of images */
+}
+
+.slides img {
+    width: 100vw; /* Each image takes full viewport width */
+    height: auto; /* Automatically adjusts height based on the aspect ratio */
+    max-height: 100%; /* Ensure image doesn't exceed container height */
+    object-fit: contain; /* Ensures the image is fully visible without being cropped */
+}
+
+/* Slider Buttons */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Media Queries for smaller screens (mobile) */
+@media (max-width: 768px) {
+    /* Disable slider layout and allow scrolling */
+    .slider {
+        height: auto; /* Allow the slider height to adjust based on content */
+        display: block; /* Change from flex to block to stack images */
+    }
+
+    .slides {
+        display: block; /* Images stack vertically instead of sliding horizontally */
+        width: 100%;    /* Ensure full width */
+        transition: none;
+        transform: none;
+    }
+
+    .slide-item {
+        margin-bottom: 20px; /* Add some space between images */
+        width: 100%;         /* Ensure each image takes full width */
+    }
+
+    .slides img {
+        object-fit: contain; /* Maintain aspect ratio */
+        width: 100%;         /* Ensure the image fits the screen width */
+        height: auto;        /* Adjust height automatically to maintain aspect ratio */
+    }
+
+    /* Hide navigation buttons on mobile */
+    .prev, .next {
+        display: none;
+    }
+}
+
